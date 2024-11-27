@@ -1,0 +1,32 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<div class="news-container">
+    <h2>最新のニュース</h2>
+    <div class="articles">
+        {% for article in articles %}
+        <div class="article">
+            <img src="{{ article.urlToImage }}" alt="記事画像" class="article-image">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description }}</p>
+            <a href="{{ article.url }}" class="read-more">続きを読む</a>
+        </div>
+        {% empty %}
+            <p>ニュースが見つかりませんでした。</p>
+        {% endfor %}
+    </div>
+
+    <!-- ページネーション -->
+    <div class="pagination">
+        {% if articles.has_previous %}
+            <a href="?page={{ articles.previous_page_number }}">前のページ</a>
+        {% endif %}
+        
+        <span>ページ {{ articles.number }} / {{ articles.paginator.num_pages }}</span>
+        
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}">次のページ</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

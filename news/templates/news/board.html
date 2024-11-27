@@ -1,0 +1,12 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h1>掲示板</h1>
+<a href="{% url 'post_create' %}">投稿を作成</a>
+<hr>
+{% for post in posts %}
+    <h2><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h2>
+    <p>{{ post.body|truncatechars:100 }}</p>
+    <hr>
+{% endfor %}
+{% endblock %}

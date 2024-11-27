@@ -1,0 +1,51 @@
+{% extends 'news/base.html' %}
+{% load static %}  <!-- これを一番上に移動するのもよいです -->
+
+{% block content %}
+<div class="news-container">
+    <h2>検索結果</h2>
+    
+    <!-- 検索フォーム -->
+    <form method="get" action="{% url 'search_results' %}">
+        <input type="text" name="query" value="{{ query }}" placeholder="検索" />
+        <button type="submit">検索</button>
+    </form>
+
+    <div class="articles">
+        {% for article in articles %}
+        <div class="article">
+            <!-- 画像が存在する場合は表示し、ない場合は代替画像を表示 -->
+            {% if article.urlToImage %}
+                <img src="{{ article.urlToImage }}" alt="記事画像" class="article-image">
+            {% else %}
+                <img src="{% static 'images/no.png' %}" alt="デフォルト画像" class="article-image">
+            {% endif %}
+
+            <div class="article-body">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.description }}</p>
+            </div>
+
+            <div class="article-footer">
+                <a href="{{ article.url }}" class="read-more">続きを読む</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>ニュースが見つかりませんでした。</p>
+        {% endfor %}
+    </div>
+
+    <!-- ページネーション -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page=1&query={{ query }}">最初</a>
+        <a href="?page={{ page_obj.previous_page_number }}&query={{ query }}">前のページ</a>
+        {% endif %}
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&query={{ query }}">次のページ</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&query={{ query }}">最後のページ</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

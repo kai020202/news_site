@@ -1,0 +1,209 @@
+/* 全要素のボックスサイズを調整 */
+* {
+  box-sizing: border-box;
+}
+
+/* 全体設定 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* ヘッダー */
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header a {
+  color: #f8ff24;
+}
+
+/* ナビゲーション */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+nav ul li a {
+  color: #f8ff24;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* コンテナ */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ニュースリスト */
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+
+.news-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.news-item h3 {
+  margin: 0 0 10px 0;
+}
+
+.news-item a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.news-item a:hover {
+  text-decoration: underline;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: #f8ff24;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 記事のレイアウト */
+.articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* レスポンシブデザイン: 中程度のサイズの画面 */
+@media screen and (min-width: 751px) and (max-width: 1000px) {
+  .articles { 
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* レスポンシブデザイン: 小さいサイズの画面 */
+@media screen and (max-width: 750px) {
+  .articles { 
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 記事カード */
+.article {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 記事の画像 */
+.article-image {
+  width: 100%; /* 親要素に合わせて横幅を100%に設定 */
+  height: 150px; /* 高さを150pxに固定 */
+  object-fit: cover; /* 画像が枠に収まるように切り抜き */
+  border-radius: 8px;
+}
+
+/* 記事の本文 */
+.article-body {
+  padding: 10px;
+  flex: 1;
+}
+
+/* 記事のフッター */
+.article-footer {
+  padding: 10px;
+}
+
+/* 全体のスタイル */
+.container {
+  max-width: 900px; /* 最大幅を設定 */
+  margin: 40px auto; /* 中央揃えと上下のマージン */
+  padding: 20px; /* 内側のパディング */
+  background-color: #ffffff; /* 背景色 */
+  border-radius: 12px; /* 角を丸める */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 優れた立体感を出す影 */
+  font-family: 'Arial', sans-serif; /* フォント */
+}
+
+/* 見出しスタイル */
+h1 {
+  font-size: 2rem; /* 見出しのフォントサイズ */
+  margin-bottom: 20px; /* 下の余白 */
+  color: #333; /* 色をダークグレー */
+  text-align: center; /* 中央揃え */
+}
+
+/* ユーザー情報 */
+p {
+  font-size: 1rem; /* 段落のフォントサイズ */
+  color: #555; /* 色を少し薄いグレー */
+  margin: 10px 0; /* 上下の余白 */
+}
+
+/* ログアウトボタンのスタイル */
+.logout-section {
+  margin-top: 30px; /* 上の余白 */
+  text-align: center; /* ボタンを中央揃え */
+}
+
+.logout-button {
+  padding: 10px 20px; /* ボタン内のパディング */
+  background-color: #ff4d4d; /* 赤色の背景 */
+  color: #ffffff; /* 白色の文字 */
+  border: none; /* ボーダーなし */
+  border-radius: 8px; /* 角を丸める */
+  cursor: pointer; /* マウスカーソルをポインタに */
+  font-size: 1rem; /* フォントサイズ */
+  transition: background-color 0.3s, transform 0.3s; /* アニメーション */
+}
+
+/* ホバー時のボタン効果 */
+.logout-button:hover {
+  background-color: #ff1a1a; /* ホバー時に背景色を変える */
+  transform: scale(1.05); /* 少し大きくする */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .container {
+      padding: 15px; /* 小さい画面用にパディングを調整 */
+  }
+
+  h1 {
+      font-size: 1.5rem; /* 小さい画面用にフォントサイズを調整 */
+  }
+
+  p {
+      font-size: 0.9rem; /* 小さい画面用にフォントサイズを調整 */
+  }
+
+  .logout-button {
+      width: 100%; /* ボタンを画面幅いっぱいに */
+  }
+}
